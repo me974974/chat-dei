@@ -26,7 +26,7 @@ export default function RootLayout({
         <AuthContext>
           <ToasterContext />
           <ActiveStatus />
-          {childen}
+          {children}
         </AuthContext>
       </body>
     </html>
