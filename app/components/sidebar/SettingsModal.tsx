@@ -12,6 +12,7 @@ import Modal from '../Modal';
 import Button from '../Button';
 import Image from 'next/image';
 import { toast } from 'react-hot-toast';
+import ButtonTheme from '../ButtonTheme';
 
 interface SettingsModalProps {
   isOpen?: boolean;
@@ -141,6 +142,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
             gap-x-6
           "
         >
+          <ButtonTheme/>
           <Button 
             disabled={isLoading}
             secondary 

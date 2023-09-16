@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 
 import ToasterContext from './context/ToasterContext'
 import AuthContext from './context/AuthContext'
+import { ThemeProvider } from "next-themes"
 
 import './globals.css'
 import ActiveStatus from './components/ActiveStatus'
@@ -24,9 +25,11 @@ export default function RootLayout({
     <html lang="fr">
       <body className={inter.className}>
         <AuthContext>
-          <ToasterContext />
-          <ActiveStatus />
-          {children}
+          <ThemeProvider attribute='class'>
+            <ToasterContext />
+            <ActiveStatus />
+            {children}
+          </ThemeProvider>
         </AuthContext>
       </body>
     </html>
