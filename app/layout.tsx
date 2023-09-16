@@ -1,11 +1,9 @@
-"use client";
 
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
 import ToasterContext from './context/ToasterContext'
 import AuthContext from './context/AuthContext'
-import { ThemeProvider } from 'next-themes';
 
 import './globals.css'
 import ActiveStatus from './components/ActiveStatus'
@@ -28,9 +26,7 @@ export default function RootLayout({
         <AuthContext>
           <ToasterContext />
           <ActiveStatus />
-          <ThemeProvider>
-            {children}
-          </ThemeProvider>
+          {childen}
         </AuthContext>
       </body>
     </html>
