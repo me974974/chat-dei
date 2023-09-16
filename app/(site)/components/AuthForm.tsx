@@ -63,14 +63,14 @@ const AuthForm = () => {
         }))
         .then((callback) => {
             if (callback?.error) {
-            toast.error('Invalid credentials!');
+            toast.error("Quelque chose s'est mal passé !");
             }
 
             if (callback?.ok) {
             router.push('/conversations')
             }
         })
-        .catch(() => toast.error('Something went wrong!'))
+        .catch(() => toast.error(' !'))
         .finally(() => setIsLoading(false))
         }
 
@@ -81,7 +81,7 @@ const AuthForm = () => {
         })
         .then((callback) => {
             if (callback?.error) {
-            toast.error('Invalid credentials!');
+            toast.error("Quelque chose s'est mal passé !");
             }
 
             if (callback?.ok) {
@@ -98,7 +98,7 @@ const AuthForm = () => {
         signIn(action, { redirect: false })
         .then((callback) => {
             if (callback?.error) {
-            toast.error('Invalid credentials!');
+            toast.error("Quelque chose s'est mal passé !");
             }
 
             if (callback?.ok) {
@@ -134,7 +134,7 @@ const AuthForm = () => {
                     {variant === "REGISTER" && (
                         <Input 
                             id="name"
-                            label="Name" 
+                            label="Pseudo" 
                             register={register}
                             errors={errors}
                             disabled={isLoading}
@@ -142,7 +142,7 @@ const AuthForm = () => {
                     )}
                     <Input 
                         id="email"
-                        label="Email adress" 
+                        label="Adresse Email" 
                         type="email"
                         register={register}
                         errors={errors}
@@ -150,7 +150,7 @@ const AuthForm = () => {
                     />
                     <Input 
                         id="password"
-                        label="Password" 
+                        label="Mot De Passe" 
                         type="password"
                         register={register}
                         errors={errors}
@@ -162,7 +162,7 @@ const AuthForm = () => {
                             fullWidth
                             type="submit"
                         >
-                            {variant === 'LOGIN' ? 'Sign In' : 'Register'}
+                            {variant === 'LOGIN' ? 'Se connecter' : "S'inscrire"}
                         </Button>
                     </div>
                 </form>
@@ -222,13 +222,13 @@ const AuthForm = () => {
                     text-gray-500
                 ">
                     <div>
-                        {variant === 'LOGIN' ? 'New to <ℂ𝕙𝕒𝕥 𝔻𝕖𝕚/> ?' : 'Already have an account ?'}
+                        {variant === 'LOGIN' ? 'Nouveau sur <ℂ𝕙𝕒𝕥 𝔻𝕖𝕚/> ?' : 'Vous avez déjà un compte ?'}
                     </div>
                     <div
                         onClick={toggleVariant}
                         className="underline cursor-pointer"
                     >
-                        {variant === 'LOGIN' ? 'Create an account' : 'Login'}
+                        {variant === 'LOGIN' ? 'Créer un compte' : 'Se connecter'}
                     </div>
                 </div>
             </div>

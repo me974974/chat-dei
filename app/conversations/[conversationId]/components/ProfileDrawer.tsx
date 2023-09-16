@@ -39,10 +39,10 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
 
     const statusText = useMemo(() => {
         if (data.isGroup) {
-            return `${data.users.length} members`;
+            return `${data.users.length} membres`;
         }
 
-        return isActive ? 'Active' : 'Offline';
+        return isActive ? 'Actif' : 'Hors ligne';
     }, [data, isActive]);
 
     return (
@@ -150,7 +150,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                                 focus:ring-offset-2
                                                             "
                                                         >
-                                                            <span className="sr-only">Close Panel</span>
+                                                            <span className="sr-only">Fermer le Panel</span>
                                                             <IoClose size={24} />
                                                         </button>
                                                     </div>

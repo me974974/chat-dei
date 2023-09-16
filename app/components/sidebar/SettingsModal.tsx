@@ -60,7 +60,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
       router.refresh();
       onClose();
     })
-    .catch(() => toast.error('Something went wrong!'))
+    .catch(() => toast.error("Quelque chose s'est mal passé!"))
     .finally(() => setIsLoading(false));
   }
 
@@ -77,16 +77,16 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                 text-gray-900
               "
             >
-              Profile
+              Profil
             </h2>
             <p className="mt-1 text-sm leading-6 text-gray-600">
-              Edit your public information.
+            Modifiez vos informations publiques.
             </p>
 
             <div className="mt-10 flex flex-col gap-y-8">
               <Input
                 disabled={isLoading}
-                label="Name" 
+                label="Nom" 
                 id="name" 
                 errors={errors} 
                 required 
@@ -123,7 +123,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                       secondary
                       type="button"
                     >
-                      Change
+                      Changer
                     </Button>
                   </CldUploadButton>
                 </div>
@@ -146,13 +146,13 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
             secondary 
             onClick={onClose}
           >
-            Cancel
+            Annuler
           </Button>
           <Button 
             disabled={isLoading}
             type="submit"
           >
-            Save
+            Sauvergarder
           </Button>
         </div>
       </form>

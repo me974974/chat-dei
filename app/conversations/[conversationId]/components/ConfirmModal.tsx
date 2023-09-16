@@ -32,7 +32,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
       router.push('/conversations');
       router.refresh();
     })
-    .catch(() => toast.error('Something went wrong!'))
+    .catch(() => toast.error("Quelque chose s'est mal passé !"))
     .finally(() => setIsLoading(false))
   }, [router, conversationId, onClose]);
 
@@ -77,7 +77,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
           </Dialog.Title>
           <div className="mt-2">
             <p className="text-sm text-gray-500">
-              Are you sure you want to delete this conversation? This action cannot be undone.
+            Êtes-vous sûr de vouloir supprimer cette conversation ? Cette action ne peut pas être annulée.
             </p>
           </div>
         </div>
@@ -88,14 +88,14 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
           danger
           onClick={onDelete}
         >
-          Delete
+          Supprimer
         </Button>
         <Button
           disabled={isLoading}
           secondary
           onClick={onClose}
         >
-          Cancel
+          Annuler
         </Button>
       </div>
     </Modal>
