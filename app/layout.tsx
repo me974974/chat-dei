@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 
 import ToasterContext from './context/ToasterContext'
 import AuthContext from './context/AuthContext'
+import { ThemeProvider } from 'next-themes';
 
 import './globals.css'
 import ActiveStatus from './components/ActiveStatus'
@@ -26,7 +27,9 @@ export default function RootLayout({
         <AuthContext>
           <ToasterContext />
           <ActiveStatus />
-          {children}
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
         </AuthContext>
       </body>
     </html>
