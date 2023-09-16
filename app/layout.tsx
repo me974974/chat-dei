@@ -1,6 +1,5 @@
 "use client";
 
-import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
 import ToasterContext from './context/ToasterContext'
@@ -12,7 +11,7 @@ import ActiveStatus from './components/ActiveStatus'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
+export const metadata = {
   title: '<ℂ𝕙𝕒𝕥 𝔻𝕖𝕚/>',
   description: '<ℂ𝕙𝕒𝕥 𝔻𝕖𝕚/>',
 }
