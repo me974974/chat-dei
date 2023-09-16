@@ -18,6 +18,7 @@ const Body: React.FC<BodyProps> = ({
     initialMessages
 }) => {
     const [messages, setMessages] = useState(initialMessages);
+    console.log(messages)
     const bottomRef = useRef<HTMLDivElement>(null);
 
     const { conversationId } = useConversation();
