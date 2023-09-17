@@ -29,10 +29,12 @@ const MessageInput: React.FC<MessageInputProps> = ({
                 placeholder={placeholder}
                 className="
                     text-black
+                    dark:text-white
                     font-light
                     py-2
                     px-4
                     bg-neutral-100
+                    dark:bg-[#4f6c7f]
                     w-full
                     rounded-full
                     focus:outline-none

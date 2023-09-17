@@ -41,7 +41,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
 
     const message = clsx(
         "text-sm w-fit overflow-hidden",
-        isOwn ? 'bg-sky-500 text-white' : 'bg-gray-100',
+        isOwn ? 'bg-sky-500 dark:bg-red-700 text-white' : 'bg-gary-100 dark:bg-stone-900 dark:text-neutral-300',
         data.image ? 'rounded-md p-0' : 'rounded-full py-2 px-3'
     );
 
@@ -52,10 +52,10 @@ const MessageBox: React.FC<MessageBoxProps> = ({
             </div>
             <div className={clsx(body)}>
                 <div className="flex items-center gap-1">
-                    <div className="text-sm text-gray-500">
+                    <div className="text-sm text-gray-500 dark:text-black">
                         {data.sender.name}
                     </div>
-                    <div className="text-xs text-gray-400">
+                    <div className="text-xs text-gray-400 dark:text-gray-950">
                         {format(new Date(data.createdAt), `k:m`)}
                     </div>
                 </div>
@@ -90,6 +90,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({
                             test-xs
                             font-light
                             text-gray-500
+                            dark:text-black
                         "
                     >
                         {`Vu par ${seenList}`}

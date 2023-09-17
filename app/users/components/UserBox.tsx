@@ -44,7 +44,9 @@ const UserBox: React.FC<UserBoxProps> = ({
                     items-center
                     space-x-3
                     bg-white
+                    dark:bg-slate-500
                     hover:bg-neutral-100
+                    dark:hover:bg-slate-600
                     rounded-lg
                     transition
                     curosr-pointer
@@ -66,6 +68,7 @@ const UserBox: React.FC<UserBoxProps> = ({
                                     text-sm
                                     font-medium
                                     text-gray-900
+                                    dark:text-slate-100
                                 "
                             >
                                 {data.name}

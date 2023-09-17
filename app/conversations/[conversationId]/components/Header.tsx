@@ -28,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({
 
     const statusText = useMemo(() => {
         if (conversation.isGroup) {
-            return `${conversation.users.length} members`;
+            return `${conversation.users.length} membres`;
         }
 
         return isActive ? 'Actif' : 'Hors ligne';
@@ -43,7 +43,8 @@ const Header: React.FC<HeaderProps> = ({
             />
             <div
                 className="
-                    bg-white 
+                    bg-white
+                    dark:bg-[#4b5256]
                     w-full 
                     flex 
                     border-b-[1px] 
@@ -62,7 +63,9 @@ const Header: React.FC<HeaderProps> = ({
                             lg:hidden
                             block
                             text-sky-500
+                            dark:text-red-700
                             hover:text-sky-600
+                            dark:hover:text-red-800
                             transition
                             cursor-pointer
                         "
@@ -84,6 +87,7 @@ const Header: React.FC<HeaderProps> = ({
                                 text-sm
                                 font-light
                                 text-neutral-500
+                                dark:text-black
                             "
                         >
                             {statusText}
@@ -95,9 +99,11 @@ const Header: React.FC<HeaderProps> = ({
                     onClick={() => setDrawerOpen(true)}
                     className="
                         text-sky-500
-                        cursor-pointer
+                        dark:text-red-700
                         hover:text-sky-600
+                        dark:hover:text-red-800
                         transition
+                        cursor-pointer
                     "
                 />
             </div>

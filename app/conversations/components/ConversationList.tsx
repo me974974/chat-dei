@@ -107,6 +107,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
                     overflow-y-auto
                     border-r
                     border-gray-200
+                    dark:bg-slate-500
                 `,
                     isOpen ? 'hidden' : 'block w-full left-0'
                 )}
@@ -117,13 +118,14 @@ const ConversationList: React.FC<ConversationListProps> = ({
                             text-2xl
                             font-bold
                             text-gray-800
+                            dark:text-gray-100
                         ">
                             Messages
                         </div>
                         <div
                             onClick={() => setIsModalOpen(true)}
                             className="
-                                rounded-fulle
+                                rounded-full
                                 p-2
                                 bg-gray-100
                                 text-gray-600

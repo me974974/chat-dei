@@ -118,6 +118,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                 flex-col
                                                 overflow-y-scroll
                                                 bg-white
+                                                dark:bg-slate-500
                                                 py-6
                                                 shadow-xl
                                             "
@@ -142,11 +143,14 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                             className="
                                                                 rounded-md
                                                                 bg-white
+                                                                dark:bg-slate-500
                                                                 text-gray-400
+                                                                dark:text-slate-200
                                                                 hover:text-gray-500
+                                                                dark:hover:text-slate-400
                                                                 focus:outline-none
                                                                 focus:ring-2
-                                                                focus:ring-sky-500
+                                                                focus:ring-red-500
                                                                 focus:ring-offset-2
                                                             "
                                                         >
@@ -175,7 +179,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                         {title}
                                                     </div>
                                                     <div className="
-                                                        text-sm text-gray-500
+                                                        text-sm text-gray-500 dark:text-slate-200
                                                     ">
                                                         {statusText}
                                                     </div>
@@ -209,6 +213,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                                     text-sm
                                                                     font-light
                                                                     text-neutral-600
+                                                                    dark:text-slate-200
                                                                 "
                                                             >
                                                                 Delete
@@ -239,6 +244,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                                     text-sm 
                                                                     font-medium 
                                                                     text-gray-500 
+                                                                    dark:text-slate-300
                                                                     sm:w-40 
                                                                     sm:flex-shrink-0
                                                                     "
@@ -250,6 +256,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                                     mt-1 
                                                                     text-sm 
                                                                     text-gray-900 
+                                                                    dark:text-slate-50
                                                                     sm:col-span-2
                                                                     "
                                                                 >
@@ -264,6 +271,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                                             text-sm
                                                                             font-medium
                                                                             text-gray-500
+                                                                            dark:text-slate-300
                                                                             sm:w-40
                                                                             sm:flex-shrink-0
                                                                         "
@@ -275,6 +283,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                                             mt-1
                                                                             text-sm
                                                                             text-gray-900
+                                                                            dark:text-white
                                                                             sm:col-span-2
                                                                         "
                                                                     >
@@ -291,6 +300,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                                                 text-sm
                                                                                 font-medium
                                                                                 text-gray-500
+                                                                                dark:text-slate-300
                                                                                 sm:w-40
                                                                                 sm:flex-shrink-0
                                                                             "
@@ -302,6 +312,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                                                 mt-1
                                                                                 text-sm
                                                                                 text-gray-900
+                                                                                dark:text-white
                                                                                 sm:col-span-2
                                                                             "
                                                                         >
