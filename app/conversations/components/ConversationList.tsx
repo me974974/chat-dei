@@ -118,7 +118,6 @@ const ConversationList: React.FC<ConversationListProps> = ({
                             text-2xl
                             font-bold
                             text-gray-800
-                            dark:text-gray-100
                         ">
                             Messages
                         </div>

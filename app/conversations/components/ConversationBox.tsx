@@ -107,7 +107,6 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
                             text-md
                             font-medium
                             text-gray-900
-                            dark:text-slate-100
                         "
                         >
                             {data.name || otherUser.name}

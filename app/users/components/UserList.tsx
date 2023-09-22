@@ -36,7 +36,6 @@ const UserList: React.FC<UserListProps> = ({
                         text-2xl
                         font-bold
                         text-neutral-800
-                        dark:text-gray-100
                         py-4
                     ">
                         Utilisateurs
