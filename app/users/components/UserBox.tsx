@@ -7,6 +7,7 @@ import { useCallback, useState } from "react";
 
 import Avatar from "@/app/components/Avatar";
 import LoadingModal from "@/app/components/LoadingModal";
+import toast from "react-hot-toast";
 
 interface UserBoxProps {
     data: User
@@ -18,16 +19,44 @@ const UserBox: React.FC<UserBoxProps> = ({
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
 
+    const [isalreadyFriend, setisAlreadyFriend] = useState(false);
+
+    const checkAlreadyFriends = async () => {
+        try {
+            const response = await axios.get(`/api/friends/${data.id}/verification`);
+            const { isalreadyFriend } = response.data;
+
+            setisAlreadyFriend(isalreadyFriend);
+        } catch (error: any) {
+            console.error('Echec lors de la vérification de l\'amitié :', error);
+        }
+    };
+
     const handleCick = useCallback(() => {
         setIsLoading(true);
 
-        axios.post('/api/conversations', { 
-            userId: data.id
-        })
-        .then((data) => {
-            router.push(`/conversations/${data.data.id}`);
-        })
-        .finally(() => setIsLoading(false));
+        if (!isalreadyFriend) {
+            axios.post('/api/friends', {
+                friendId: data.id
+            })
+            toast.success(`Ami ajouté : ${data.name}`);
+
+            axios.post('/api/conversations', { 
+                userId: data.id
+            })
+            .then((data) => {
+                router.push(`/conversations/${data.data.id}`);
+            })
+            .finally(() => setIsLoading(false));
+        } else {
+            axios.post('/api/conversations', { 
+                userId: data.id
+            })
+            .then((data) => {
+                router.push(`/conversations/${data.data.id}`);
+            })
+            .finally(() => setIsLoading(false));
+        }
     }, [data, router]);
 
     return (

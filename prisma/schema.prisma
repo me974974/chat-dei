@@ -26,10 +26,15 @@ model User {
   seenMessageIds String[] @db.ObjectId
   seenMessages Message[] @relation("Seen", fields: [seenMessageIds], references: [id])
 
+  friendsIds String[] @db.ObjectId
+  friends User[] @relation("friends", fields: [friendsIds], references: [id])
+
+  friendOfIds String[] @db.ObjectId
+  friendOf User[] @relation("friends", fields: [friendsIds], references: [id])
+
   accounts Account[]
   messages Message[]
 }
-
 model Account {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   userId             String   @db.ObjectId

@@ -70,7 +70,7 @@ const AuthForm = () => {
             router.push('/conversations')
             }
         })
-        .catch(() => toast.error(' !'))
+        .catch(() => toast.error("Quelque chose s'est mal passé !"))
         .finally(() => setIsLoading(false))
         }
 
@@ -195,7 +195,7 @@ const AuthForm = () => {
                                 bg-white 
                                 px-2 
                                 text-gray-500">
-                                    Or Continue With
+                                    Ou Continuez Avec
                             </span>
                         </div>
                     </div>
