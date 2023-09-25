@@ -23,7 +23,7 @@ const UserBox: React.FC<UserBoxProps> = ({
 
     const checkAlreadyFriends = async () => {
         try {
-            const response = await axios.get(`/api/friends/${data.id}/verification`);
+            const response = await axios.get('/api/friends/verification', { params: data.id });
             const { isalreadyFriend } = response.data;
 
             setisAlreadyFriend(isalreadyFriend);
