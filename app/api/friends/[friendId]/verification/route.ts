@@ -6,7 +6,7 @@ interface IParams {
     friendId?: string;
 }
 
-export async function POST(
+export async function GET(
     request: Request,
     { params }: { params: IParams }
 ) {
@@ -16,6 +16,8 @@ export async function POST(
         const {
             friendId
         } = params;
+
+        console.log(friendId);
 
         if (!currentUser?.id) {
             return new NextResponse('Unauthorized', { status: 401 });
