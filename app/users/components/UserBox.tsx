@@ -35,6 +35,8 @@ const UserBox: React.FC<UserBoxProps> = ({
     const handleCick = useCallback(() => {
         setIsLoading(true);
 
+        checkAlreadyFriends()
+
         if (!isalreadyFriend) {
             axios.post('/api/friends', {
                 friendId: data.id
