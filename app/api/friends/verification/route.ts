@@ -38,6 +38,8 @@ export async function GET(
                 },
             });
 
+        console.log('amis', user?.friends);
+
         if (user && user.friends.length > 0) {
             NextResponse.json(true);
         } else {
