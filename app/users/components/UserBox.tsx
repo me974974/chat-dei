@@ -21,17 +21,17 @@ const UserBox: React.FC<UserBoxProps> = ({
 
     const [isalreadyFriend, setisAlreadyFriend] = useState(false);
 
-    const checkAlreadyFriends = async () => {
-        try {
-            const response = await axios.get(`/api/friends/verification?friendId=${data.id}`);
-            setisAlreadyFriend(response.data);
-        } catch (error: any) {
-            console.error('Echec lors de la vérification de l\'amitié :', error);
-        }
-    };
-
     const handleCick = useCallback(() => {
         setIsLoading(true);
+
+        const checkAlreadyFriends = async () => {
+            try {
+                const response = await axios.get(`/api/friends/verification?friendId=${data.id}`);
+                setisAlreadyFriend(response.data);
+            } catch (error: any) {
+                console.error('Echec lors de la vérification de l\'amitié :', error);
+            }
+        };
 
         checkAlreadyFriends()
 
@@ -57,7 +57,7 @@ const UserBox: React.FC<UserBoxProps> = ({
             })
             .finally(() => setIsLoading(false));
         }
-    }, [data, router, checkAlreadyFriends, isalreadyFriend]);
+    }, [data, router, isalreadyFriend]);
 
     return (
         <>
