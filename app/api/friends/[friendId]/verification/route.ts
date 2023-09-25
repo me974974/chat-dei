@@ -38,6 +38,8 @@ export async function POST(
 
         const isAlreadyFriends = !!areFriends;
 
+        console.log(areFriends);
+
         return(NextResponse.json({ isAlreadyFriends }));
     } catch (error: any) {
         console.log(error, 'ERROR_FRIENDS');
