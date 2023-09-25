@@ -27,6 +27,7 @@ const UserBox: React.FC<UserBoxProps> = ({
         const checkAlreadyFriends = async () => {
             try {
                 const response = await axios.get(`/api/friends/verification?friendId=${data.id}`);
+                console.log('résulat : ', response.data);
                 setisAlreadyFriend(response.data);
             } catch (error: any) {
                 console.error('Echec lors de la vérification de l\'amitié :', error);

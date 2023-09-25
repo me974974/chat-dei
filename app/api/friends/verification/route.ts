@@ -8,13 +8,12 @@ interface IParams {
 }
 
 export async function GET(
-    req: NextApiRequest,
-    res: NextApiResponse<boolean | { error: string }>
+    req: Request,
 ) {
     try {
-        const { query } = req;
+        const body = await req.json();
         const currentUser = await getCurrentUser();
-        const { friendId } = query;
+        const { friendId } = body;
 
         console.log(friendId);
 
@@ -40,9 +39,9 @@ export async function GET(
             });
 
         if (user && user.friends.length > 0) {
-        res.status(200).json(true);
+            NextResponse.json(true);
         } else {
-        res.status(200).json(false);
+            NextResponse.json(false);
         }
     } catch (error: any) {
         console.log(error, 'ERROR_FRIENDS');
