@@ -57,7 +57,7 @@ const UserBox: React.FC<UserBoxProps> = ({
             })
             .finally(() => setIsLoading(false));
         }
-    }, [data, router]);
+    }, [data, router, checkAlreadyFriends, isalreadyFriend]);
 
     return (
         <>
