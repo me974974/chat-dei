@@ -1,8 +1,9 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
+import { NextApiRequest } from "next";
 
-export default async function handler(request: Request) {
+export default async function handler(request: NextApiRequest) {
     try {
         const { query } = await request.json();
         const currentUser = await getCurrentUser();
