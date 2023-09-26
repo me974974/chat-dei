@@ -1,9 +1,8 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
-import { NextApiRequest } from "next";
 
-export default async function handler(request: NextApiRequest) {
+async function handler(request: Request) {
     try {
         const { query } = await request.json();
         const currentUser = await getCurrentUser();
@@ -44,3 +43,5 @@ export default async function handler(request: NextApiRequest) {
         return NextResponse.json({ error: 'Internal Error' }, { status: 500 });
     }
 }
+
+export {handler as POST, handler as GET};
