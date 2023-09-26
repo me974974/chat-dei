@@ -1,28 +1,21 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
-import { NextApiRequest, NextApiResponse } from "next";
 
-interface IParams {
-    friendId?: string;
-}
-
-export async function GET(
-    req: Request,
-) {
+export default async function handler(request: Request) {
     try {
-        const body = await req.json();
+        const { query } = await request.json();
         const currentUser = await getCurrentUser();
-        const { friendId } = body;
+        const { friendId } = query;
 
         console.log(friendId);
 
         if (!currentUser?.id) {
-            return new NextResponse('Unauthorized', { status: 401 });
+            return NextResponse.json({error: 'Unauthorized'}, { status: 401 });
         }
 
 		if (!friendId) {
-			return new NextResponse('Invalid id', { status: 400 });
+			return NextResponse.json({error: 'Invalid id'}, { status: 400 });
 		}
 
         const user = await prisma.user.findUnique({
@@ -47,6 +40,6 @@ export async function GET(
         }
     } catch (error: any) {
         console.log(error, 'ERROR_FRIENDS');
-        return new NextResponse('Internal Error', { status: 500 });
+        return NextResponse.json({ error: 'Internal Error' }, { status: 500 });
     }
 }
