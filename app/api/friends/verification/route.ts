@@ -2,11 +2,11 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
 
-async function handler(request: Request) {
+export async function GET(request: Request) {
     try {
-        const { query } = await request.json();
+        const body = await request.json();
         const currentUser = await getCurrentUser();
-        const { friendId } = query;
+        const { friendId } = body;
 
         console.log(friendId);
 
@@ -31,17 +31,13 @@ async function handler(request: Request) {
                 },
             });
 
-        console.log('amis', user?.friends);
-
         if (user && user.friends.length > 0) {
-            NextResponse.json(true);
+            return NextResponse.json(true);
         } else {
-            NextResponse.json(false);
+            return NextResponse.json(false);
         }
     } catch (error: any) {
         console.log(error, 'ERROR_FRIENDS');
         return NextResponse.json({ error: 'Internal Error' }, { status: 500 });
     }
 }
-
-export {handler as POST, handler as GET};

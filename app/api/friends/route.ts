@@ -20,17 +20,6 @@ export async function POST(
 		if (!friendId) {
 			return new NextResponse('Invalid id', { status: 400 });
 		}
-
-		// const areFriends = await prisma.user.findFirst({
-		// 	where: {
-		// 		id: currentUser.id,
-		// 		friends: {
-		// 			some: {
-		// 			id: friendId,
-		// 			},
-		// 		},
-		// 	},
-		// });
         
 		const updatedUser = await prisma.user.update({
 			where: { 
