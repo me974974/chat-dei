@@ -19,23 +19,25 @@ export async function GET(request: Request) {
 		}
 
         const user = await prisma.user.findUnique({
-                where: {
+            where: {
                 id: currentUser.id as string,
-                },
-                include: {
+            },
+            include: {
                 friends: {
                     where: {
-                    id: friendId as string,
+                        id: friendId as string,
                     },
                 },
-                },
-            });
+            },
+        });
 
-        if (user && user.friends.length > 0) {
-            return NextResponse.json(true);
-        } else {
-            return NextResponse.json(false);
-        }
+
+        return NextResponse.json(user);
+        // if (user && user.friends.length > 0) {
+        //     return NextResponse.json(true);
+        // } else {
+        //     return NextResponse.json(false);
+        // }
     } catch (error: any) {
         console.log(error, 'ERROR_FRIENDS');
         return NextResponse.json({ error: 'Internal Error' }, { status: 500 });
