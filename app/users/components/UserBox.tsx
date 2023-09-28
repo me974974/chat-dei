@@ -8,6 +8,7 @@ import { useCallback, useState } from "react";
 import Avatar from "@/app/components/Avatar";
 import LoadingModal from "@/app/components/LoadingModal";
 import toast from "react-hot-toast";
+import getAreFriends from "@/app/actions/getAreFriends";
 
 interface UserBoxProps {
     data: User
@@ -19,24 +20,12 @@ const UserBox: React.FC<UserBoxProps> = ({
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
 
-    const [isalreadyFriend, setisAlreadyFriend] = useState(false);
-
     const handleCick = useCallback(() => {
         setIsLoading(true);
 
-        const checkAlreadyFriends = async () => {
-            try {
-                const response = await axios.get(`/api/friends/verification?friendId=${data.id}`);
-                console.log('résulat : ', response.data);
-                setisAlreadyFriend(response.data);
-            } catch (error: any) {
-                console.error('Echec lors de la vérification de l\'amitié :', error);
-            }
-        };
-
-        checkAlreadyFriends()
-
-        if (!isalreadyFriend) {
+        const areFriends = getAreFriends(data.id);
+        
+        if (!areFriends) {
             axios.post('/api/friends', {
                 friendId: data.id
             })
@@ -58,7 +47,7 @@ const UserBox: React.FC<UserBoxProps> = ({
             })
             .finally(() => setIsLoading(false));
         }
-    }, [data, router, isalreadyFriend]);
+    }, [data, router]);
 
     return (
         <>
