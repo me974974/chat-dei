@@ -31,6 +31,8 @@ const UserBox: React.FC<UserBoxProps> = ({
         }
     };
 
+    handleCheckSpecialFriend();
+
     const handleCick = useCallback(() => {
         setIsLoading(true);
         
