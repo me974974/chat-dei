@@ -8,7 +8,7 @@ import { useCallback, useState } from "react";
 import Avatar from "@/app/components/Avatar";
 import LoadingModal from "@/app/components/LoadingModal";
 import toast from "react-hot-toast";
-import getAreFriends from "@/app/actions/getAreFriends";
+// import getAreFriends from "@/app/actions/getAreFriends";
 
 interface UserBoxProps {
     data: User
@@ -23,9 +23,9 @@ const UserBox: React.FC<UserBoxProps> = ({
     const handleCick = useCallback(() => {
         setIsLoading(true);
 
-        const areFriends = getAreFriends(data.id);
+        // const areFriends = getAreFriends(data.id);
         
-        if (!areFriends) {
+        if (!isLoading) {
             axios.post('/api/friends', {
                 friendId: data.id
             })
