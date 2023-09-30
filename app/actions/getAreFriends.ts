@@ -25,7 +25,7 @@ const getAreFriends = async (
             },
         });
 
-        if (!user.friends) {
+        if (!user?.friends) {
             return false
         } else {
             return true
