@@ -8,7 +8,7 @@ import { useCallback, useState } from "react";
 import Avatar from "@/app/components/Avatar";
 import LoadingModal from "@/app/components/LoadingModal";
 import toast from "react-hot-toast";
-// import getAreFriends from "@/app/actions/getAreFriends";
+import getAreFriends from "@/app/actions/getAreFriends";
 
 interface UserBoxProps {
     data: User
@@ -19,12 +19,20 @@ const UserBox: React.FC<UserBoxProps> = ({
 }) => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
-    const areFriends = true
+    const [areFriends, setArefriends] = useState<boolean | null>(null);
+
+    const handleCheckSpecialFriend = async () => {
+        try {
+            const result = await getAreFriends(data.id);
+            setArefriends(result);
+        } catch (error) {
+            console.error('Une erreur s\'est produite lors de la vérification de l\'ami spécial :', error);
+            setArefriends(false);
+        }
+    };
 
     const handleCick = useCallback(() => {
         setIsLoading(true);
-
-        // const areFriends = getAreFriends(data.id);
         
         if (areFriends) {
             axios.post('/api/conversations', { 
