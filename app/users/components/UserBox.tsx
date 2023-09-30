@@ -19,18 +19,14 @@ const UserBox: React.FC<UserBoxProps> = ({
 }) => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
+    const areFriends = true
 
     const handleCick = useCallback(() => {
         setIsLoading(true);
 
         // const areFriends = getAreFriends(data.id);
         
-        if (!isLoading) {
-            axios.post('/api/friends', {
-                friendId: data.id
-            })
-            toast.success(`Ami ajouté : ${data.name}`);
-
+        if (areFriends) {
             axios.post('/api/conversations', { 
                 userId: data.id
             })
@@ -39,6 +35,11 @@ const UserBox: React.FC<UserBoxProps> = ({
             })
             .finally(() => setIsLoading(false));
         } else {
+            axios.post('/api/friends', {
+                friendId: data.id
+            })
+            toast.success(`Ami ajouté : ${data.name}`);
+
             axios.post('/api/conversations', { 
                 userId: data.id
             })
