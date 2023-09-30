@@ -1,38 +1,34 @@
-// import prisma from "@/app/libs/prismadb";
-// import getCurrentUser from "./getCurrentUser";
+import prisma from "@/app/libs/prismadb";
+import getCurrentUser from "./getCurrentUser";
 
-// const getAreFriends = async (
-//     friendId: string
-// ) => {
-//     try {
+const getAreFriends = async (
+    friendId: string
+) => {
+    try {
 
-//         const currentUser = await getCurrentUser();
+        const currentUser = await getCurrentUser();
 
-//         if (!currentUser?.id) {
-//             return [];
-//         }
+        if (!currentUser?.id) {
+            return [];
+        }
 
-//         const user = await prisma.user.findUnique({
-//             where: {
-//                 id: currentUser.id as string,
-//             },
-//             include: {
-//                 friends: {
-//                     where: {
-//                         id: friendId as string,
-//                     },
-//                 },
-//             },
-//         });
+        const user = await prisma.user.findUnique({
+            where: {
+                id: currentUser.id,
+            },
+            include: {
+                friends: {
+                    where: {
+                        id: friendId,
+                    },
+                },
+            },
+        });
 
-//         if (!user?.friends) {
-//             return false
-//         } else {
-//             return true
-//         }
-//     } catch (error: any) {
-//         return false;
-//     }
-// }
+        return user;
+    } catch (error: any) {
+        return null;
+    }
+}
 
-// export default getAreFriends;
+export default getAreFriends;
