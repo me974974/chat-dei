@@ -57,9 +57,8 @@ export async function POST(
 				}
 			}
 		});
-		toast.success(`Ami ajouté : ${friendId}`);
 
-		return (NextResponse.json(updatedUser), NextResponse.json(updatedFriend))
+		return (NextResponse.json(updatedUser), NextResponse.json(updatedFriend), toast.success(`Ami ajouté : ${friendId}`));
 
     } catch (error: any) {
         console.log(error, 'ERROR_FRIENDS');
