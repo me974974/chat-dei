@@ -7,7 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import Avatar from "@/app/components/Avatar";
 import LoadingModal from "@/app/components/LoadingModal";
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 // import getAreFriends from "@/app/actions/getAreFriends";
 
 interface UserBoxProps {
@@ -51,8 +51,10 @@ const UserBox: React.FC<UserBoxProps> = ({
             axios.post('/api/friends', {
                 friendId: data.id
             })
-            .then((data) => {
-                console.log(data.data);
+            .then((response) => {
+                if (response.data.status !== 201) {
+                    toast.success(`Ami ajouté : ${data.name}`);
+                }
             })
             // toast.success(`Ami ajouté : ${data.name}`);
 
