@@ -37,7 +37,7 @@ export async function POST(
 
 		const areFriends = user.friends.some(friend => friend.id === friendId);
 
-		if (areFriends === true) {
+		if (areFriends === false) {
         
 			const updatedUser = await prisma.user.update({
 				where: { 
