@@ -14,26 +14,14 @@ interface UserBoxProps {
     data: User
 }
 
-const UserBox: React.FC<UserBoxProps> = ({
+const UserBox: React.FC<UserBoxProps> = async ({
     data
 }) => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
-    const [areFriends, setArefriends] = useState<boolean | null>(null);
+    // const [areFriends, setArefriends] = useState<boolean | null>(null);
 
-    useEffect(() => {
-        const handleCheckSpecialFriend = async () => {
-            try {
-                const result = await getAreFriends(data.id);
-                setArefriends(result);
-            } catch (error) {
-                console.error('Une erreur s\'est produite lors de la vérification de l\'ami spécial :', error);
-                setArefriends(false);
-            }
-        };
-
-        handleCheckSpecialFriend();
-    }, [data.id]);
+    const areFriends = await getAreFriends(data.id);
 
     const handleCick = useCallback(() => {
         setIsLoading(true);
