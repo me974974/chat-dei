@@ -52,7 +52,7 @@ const UserBox: React.FC<UserBoxProps> = ({
                 friendId: data.id
             })
             .then((data) => {
-                console.log(data.status, data.data);
+                console.log(data.data);
             })
             // toast.success(`Ami ajouté : ${data.name}`);
 

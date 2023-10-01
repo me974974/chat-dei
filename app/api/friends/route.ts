@@ -76,6 +76,8 @@ export async function POST(
 			});
 
 			return (NextResponse.json(updatedUser), NextResponse.json(updatedFriend));
+		} else {
+			return NextResponse.json({status: 201});
 		}
 
     } catch (error: any) {
