@@ -1,7 +1,7 @@
 import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "./getCurrentUser";
 
-async function getAreFriends( friendId: string ): Promise<boolean> {
+const getAreFriends = async ( friendId: string ): Promise<boolean> =>  {
     
     try {
         const currentUser = await getCurrentUser();
