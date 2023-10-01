@@ -21,44 +21,62 @@ export async function POST(
 		if (!friendId) {
 			return new NextResponse('Invalid id', { status: 400 });
 		}
+
+		const user = await prisma.user.findUnique({
+            where: {
+                id: currentUser?.id,
+            },
+            include: {
+                friends: true, // Inclure la liste des amis de l'utilisateur
+            },
+        });
+
+		if (!user) {
+            return new NextResponse('Unauthorized', { status: 401 });
+        }
+
+		const areFriends = user.friends.some(friend => friend.id === friendId);
+
+		if (areFriends === true) {
         
-		const updatedUser = await prisma.user.update({
-			where: { 
-				id: currentUser.id
-			},
-			data: {
-				friends: {
-					connect: {
-						id: friendId
+			const updatedUser = await prisma.user.update({
+				where: { 
+					id: currentUser.id
+				},
+				data: {
+					friends: {
+						connect: {
+							id: friendId
+							}
+						},
+					friendOf : {
+						connect: {
+							id: friendId
+						}
+					}
+				}
+			});
+				
+			const updatedFriend = await prisma.user.update({
+				where: { 
+					id: friendId
+				},
+				data: {
+					friendOf: {
+						connect: {
+							id: currentUser.id
 						}
 					},
-				friendOf : {
-					connect: {
-						id: friendId
+					friends: {
+						connect: {
+							id: currentUser.id
+						}
 					}
 				}
-			}
-		});
-			
-		const updatedFriend = await prisma.user.update({
-			where: { 
-				id: friendId
-			},
-			data: {
-				friendOf: {
-					connect: {
-						id: currentUser.id
-					}
-				},
-				friends: {
-					connect: {
-						id: currentUser.id
-					}
-				}
-			}
-		});
+			});
 
-		return (NextResponse.json(updatedUser), NextResponse.json(updatedFriend), toast.success(`Ami ajouté : ${friendId}`));
+			return (NextResponse.json(updatedUser), NextResponse.json(updatedFriend));
+		}
 
     } catch (error: any) {
         console.log(error, 'ERROR_FRIENDS');

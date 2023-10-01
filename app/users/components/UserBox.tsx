@@ -51,6 +51,9 @@ const UserBox: React.FC<UserBoxProps> = ({
             axios.post('/api/friends', {
                 friendId: data.id
             })
+            .then((data) => {
+                console.log(data.status);
+            })
             // toast.success(`Ami ajouté : ${data.name}`);
 
             axios.post('/api/conversations', { 
