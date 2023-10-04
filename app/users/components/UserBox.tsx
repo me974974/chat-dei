@@ -28,6 +28,7 @@ const UserBox: React.FC<UserBoxProps> = ({
         .then((response) => {
             if (!response.data.status) {
                 toast.success(`Demande d'ami envoyée à : ${data.name}`);
+                setIsLoading(false);
             }
         })
 
