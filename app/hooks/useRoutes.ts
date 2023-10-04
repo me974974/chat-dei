@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { HiChat } from "react-icons/hi";
+import { IoIosNotifications } from "react-icons/io";
 import { 
     HiArrowLeftOnRectangle,
     HiUsers
@@ -25,6 +26,12 @@ const useRoutes = () => {
             href: '/users',
             icon: HiUsers,
             active: pathname === '/users'
+        },
+        {
+            label: 'Notif',
+            href: '/notifications',
+            icon: IoIosNotifications,
+            active: pathname === '/notifications'
         },
         {
             label: 'Logout',

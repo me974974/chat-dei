@@ -45,14 +45,14 @@ const ConversationList: React.FC<ConversationListProps> = ({
       
         const updateHandler = (conversation: FulleConversationType) => {
             setItems((current) => current.map((currentConversation) => {
-              if (currentConversation.id === conversation.id) {
-                return {
-                  ...currentConversation,
-                  messages: conversation.messages
-                };
-              }
-      
-              return currentConversation;
+                if (currentConversation.id === conversation.id) {
+                    return {
+                    ...currentConversation,
+                    messages: conversation.messages
+                    };
+                }
+        
+                return currentConversation;
             }))
         };
       

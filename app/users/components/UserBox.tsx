@@ -8,7 +8,6 @@ import { useCallback, useEffect, useState } from "react";
 import Avatar from "@/app/components/Avatar";
 import LoadingModal from "@/app/components/LoadingModal";
 import toast from "react-hot-toast";
-// import getAreFriends from "@/app/actions/getAreFriends";
 
 interface UserBoxProps {
     data: User
@@ -19,42 +18,26 @@ const UserBox: React.FC<UserBoxProps> = ({
 }) => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
-    // const [areFriends, setArefriends] = useState<boolean | null>(null);
-    const areFriends = false;
-
-    // useEffect(() => {
-    //     const handleCheckSpecialFriend = async () => {
-    //         try {
-    //             const result = await getAreFriends(data.id);
-    //             setArefriends(result);
-    //         } catch (error) {
-    //             console.error('Une erreur s\'est produite lors de la vérification de l\'ami spécial :', error);
-    //             setArefriends(false);
-    //         }
-    //     };
-
-    //     handleCheckSpecialFriend();
-    // }, [data.id]);
 
     const handleCick = useCallback(() => {
         setIsLoading(true);
         
-        axios.post('/api/friends', {
-            friendId: data.id
+        axios.post('/api/notifications', {
+            receiver: data.id
         })
         .then((response) => {
             if (!response.data.status) {
-                toast.success(`Ami ajouté : ${data.name}`);
+                toast.success(`Demande d'ami envoyée à : ${data.name}`);
             }
         })
 
-        axios.post('/api/conversations', { 
-            userId: data.id
-        })
-        .then((data) => {
-            router.push(`/conversations/${data.data.id}`);
-        })
-        .finally(() => setIsLoading(false));
+        // axios.post('/api/conversations', { 
+        //     userId: data.id
+        // })
+        // .then((data) => {
+        //     router.push(`/conversations/${data.data.id}`);
+        // })
+        // .finally(() => setIsLoading(false));
     }, [data, router]);
 
     return (
