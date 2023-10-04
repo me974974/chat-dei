@@ -16,13 +16,13 @@ const Notification: React.FC<NotificationProps> = ({
     isLoading,
 }) => {
   return (
-    <div className="bg-white dark:bg-slate-500 hover:bg-neutral-100 dark:hover:bg-slate-600 p-4 rounded-lg shadow-md">
+    <div className="bg-neutral-200 dark:bg-slate-700 hover:bg-neutral-400 dark:hover:bg-slate-800 p-4 rounded-lg shadow-md">
         <p className="text-gray-700">{data.sender.name} vous a envoyé une demande d&apos;ami</p>
         <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
             <Button
                 disabled={isLoading}
                 accept
-                onClick={onRejectClick}
+                onClick={onAcceptClick}
             >
                 Accepter
             </Button>
