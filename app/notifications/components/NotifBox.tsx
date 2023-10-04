@@ -16,7 +16,7 @@ const Notification: React.FC<NotificationProps> = ({
     isLoading,
 }) => {
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md">
+    <div className="bg-white dark:bg-slate-500 hover:bg-neutral-100 dark:hover:bg-slate-600 p-4 rounded-lg shadow-md">
         <p className="text-gray-700">{data.sender.name} vous a envoyé une demande d&apos;ami</p>
         <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
             <Button
@@ -28,7 +28,6 @@ const Notification: React.FC<NotificationProps> = ({
             </Button>
             <Button
                 disabled={isLoading}
-                danger
                 secondary
                 onClick={onRejectClick}
             >

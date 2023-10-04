@@ -25,22 +25,33 @@ const NotifList: React.FC<NotificationListProps> = ({
         items.map((item) => (        
             axios.delete(`/api/notifications/${item.id}`)
             .then(() => {
-                router.push('/conversations');
-                router.refresh();
+                toast.success("Demande rejeté avec succès")
             })
             .catch(() => toast.error("Quelque chose s'est mal passé !"))
             .finally(() => setIsLoading(false))
         ))
-    }, [router, items]);
+    }, [items]);
 
     const onAccept = useCallback(() => {
+        setIsLoading(true);
         
-        items.map((item) => (        
+        items.map((item) => (
+            axios.post('/api/friends', {
+                friendId: item.receiverId
+            })
+            .then((data) => {
+                toast.success(`Ami ajouté : ${data.data.id}`)
+            }),
+
+            axios.delete(`/api/notifications/${item.id}`)
+            .catch(() => toast.error("Quelque chose s'est mal passé !"))
+            .finally(() => setIsLoading(false)),
+
             axios.post('/api/conversations', { 
                 userId: item.receiverId
             })
             .then((data) => {
-                router.push(`/conversations/${data.data.receiverId}`);
+                router.push(`/conversations/${data.data.id}`);
             })
         ))
     }, [router, items]);
@@ -75,8 +86,8 @@ const NotifList: React.FC<NotificationListProps> = ({
                     <NotifBox 
                         key={item.id}
                         data={item}
-                        onAcceptClick={() => {}}
-                        onRejectClick={() => {}}
+                        onAcceptClick={onAccept}
+                        onRejectClick={onReject}
                         isLoading={isLoading}
                     />
                 ))}
