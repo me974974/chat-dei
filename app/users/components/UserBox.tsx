@@ -28,8 +28,15 @@ const UserBox: React.FC<UserBoxProps> = ({
         .then((response) => {
             if (!response.data.status) {
                 toast.success(`Demande d'ami envoyée à : ${data.name}`);
-                setIsLoading(false);
+            } else {
+                axios.post('/api/conversations', { 
+                        userId: data.id
+                    })
+                    .then((data) => {
+                        router.push(`/conversations/${data.data.id}`);
+                    })
             }
+            setIsLoading(false);
         })
 
         // axios.post('/api/conversations', { 
