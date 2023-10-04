@@ -17,7 +17,7 @@ const Notification: React.FC<NotificationProps> = ({
 }) => {
   return (
     <div className="bg-white p-4 rounded-lg shadow-md">
-        <p className="text-gray-700">{data.sender.name} vous a envoyé une demande d'ami</p>
+        <p className="text-gray-700">{data.sender.name} vous a envoyé une demande d&apos;ami</p>
         <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
             <Button
                 disabled={isLoading}

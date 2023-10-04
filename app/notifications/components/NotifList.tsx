@@ -43,7 +43,7 @@ const NotifList: React.FC<NotificationListProps> = ({
                 router.push(`/conversations/${data.data.receiverId}`);
             })
         ))
-    }, [router, items, setIsLoading]);
+    }, [router, items]);
 
     return (
         <aside
