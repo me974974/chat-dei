@@ -37,10 +37,10 @@ const NotifList: React.FC<NotificationListProps> = ({
         
         items.map((item) => (
             axios.post('/api/friends', {
-                friendId: item.receiverId
+                friendId: item.senderId
             })
             .then((data) => {
-                toast.success(`Ami ajouté : ${data.data.id}`)
+                toast.success(`Ami ajouté : ${data.data.name}`)
             }),
 
             axios.delete(`/api/notifications/${item.id}`)
@@ -48,7 +48,7 @@ const NotifList: React.FC<NotificationListProps> = ({
             .finally(() => setIsLoading(false)),
 
             axios.post('/api/conversations', { 
-                userId: item.receiverId
+                userId: item.senderId
             })
             .then((data) => {
                 router.push(`/conversations/${data.data.id}`);

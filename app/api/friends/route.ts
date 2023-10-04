@@ -22,24 +22,24 @@ export async function POST(
 			return new NextResponse('Invalid id', { status: 400 });
 		}
 
-		const user = await prisma.user.findUnique({
-            where: {
-                id: currentUser?.id,
-            },
-            include: {
-                friends: true, // Inclure la liste des amis de l'utilisateur
-            },
-        });
+		// const user = await prisma.user.findUnique({
+        //     where: {
+        //         id: currentUser?.id,
+        //     },
+        //     include: {
+        //         friends: true, // Inclure la liste des amis de l'utilisateur
+        //     },
+        // });
 
-		if (!user) {
-            return new NextResponse('Unauthorized', { status: 401 });
-        }
+		// if (!user) {
+        //     return new NextResponse('Unauthorized', { status: 401 });
+        // }
 
-		const areFriends = user.friends.some(friend => friend.id === friendId);
+		// const areFriends = user.friends.some(friend => friend.id === friendId);
 
-		if (areFriends === false) {
+		// if (areFriends === false) {
         
-			const updatedUser = await prisma.user.update({
+		const updatedUser = await prisma.user.update({
 				where: { 
 					id: currentUser.id
 				},
@@ -55,9 +55,9 @@ export async function POST(
 						}
 					}
 				}
-			});
+		});
 				
-			const updatedFriend = await prisma.user.update({
+		const updatedFriend = await prisma.user.update({
 				where: { 
 					id: friendId
 				},
@@ -73,12 +73,12 @@ export async function POST(
 						}
 					}
 				}
-			});
+		});
 
-			return (NextResponse.json(updatedUser), NextResponse.json(updatedFriend));
-		} else {
-			return NextResponse.json({status: 201});
-		}
+		return (NextResponse.json(updatedUser), NextResponse.json(updatedFriend));
+		// } else {
+			// return NextResponse.json({status: 201});
+		// }
 
     } catch (error: any) {
         console.log(error, 'ERROR_FRIENDS');
