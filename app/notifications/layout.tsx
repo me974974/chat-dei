@@ -11,7 +11,7 @@ export default async function ConversationsLayout({
     const notifications = await getNotifications();
 
     return (
-        // ts-expect-error Server Component
+        // @ts-expect-error Server Component
         <Sidebar>
             <div className="h-full">
                 <NotifList
