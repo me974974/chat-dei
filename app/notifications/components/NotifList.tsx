@@ -86,8 +86,8 @@ const NotifList: React.FC<NotificationListProps> = ({
                     <NotifBox 
                         key={item.id}
                         data={item}
-                        onAcceptClick={() => {}}
-                        onRejectClick={() => {}}
+                        onAcceptClick={onAccept}
+                        onRejectClick={onReject}
                         isLoading={isLoading}
                     />
                 ))}
