@@ -2,6 +2,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 
 import prisma from "@/app/libs/prismadb";
+import { pusherServer } from "@/app/libs/pusher";
 
 interface IParams {
     notificationId?: string;
@@ -34,10 +35,13 @@ export async function DELETE(
         }
 
         const deletedNotification = await prisma.notification.delete({
-        where: {
-            id: notificationId
-        },
+            where: {
+                id: notificationId
+            },
         });
+
+        if (existingNnotification.receiver.email)
+        pusherServer.trigger(existingNnotification.receiver.email, 'notification:remove', existingNnotification);
 
         return NextResponse.json(deletedNotification);
     } catch (error) {

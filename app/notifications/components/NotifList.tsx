@@ -1,11 +1,14 @@
 "use client";
 
 import { FullNotificationType } from "@/app/types";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useMemo, useEffect } from "react";
 import NotifBox from "./NotifBox";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
+import { pusherClient } from "@/app/libs/pusher";
+import { find } from "lodash";
 
 interface NotificationListProps {
     initialItems: FullNotificationType[];
@@ -15,9 +18,14 @@ const NotifList: React.FC<NotificationListProps> = ({
     initialItems
 }) => {
 
+    const session = useSession();
     const [items, setItems] = useState(initialItems);
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
+
+    const pusherKey = useMemo(() => {
+        return session.data?.user?.email
+    }, [session.data?.user?.email])
 
     const onReject = useCallback(() => {
         setIsLoading(true);
@@ -55,6 +63,43 @@ const NotifList: React.FC<NotificationListProps> = ({
             })
         ))
     }, [router, items]);
+
+    useEffect(() => {
+        if (!pusherKey) {
+            return;
+        }
+      
+        pusherClient.subscribe(pusherKey);
+          
+        const newHandler = (notification: FullNotificationType) => {
+            setItems((current) => {
+                if (find(current, { id: notification.id })) {
+                    return current;
+                }
+        
+                return [notification, ...current]
+            });
+        };
+      
+        const removeHandler = (notification: FullNotificationType) => {
+            setItems((current) => {
+                return [...current.filter((convo) => convo.id !== notification.id)]
+            });
+
+            if (items.map((item) => (item.id === notification.id))) {
+                router.push('/notifications');
+            }
+        };
+      
+        pusherClient.bind('notification:new', newHandler);
+        pusherClient.bind('notification:remove', removeHandler);
+
+        return () => {
+            pusherClient.unsubscribe(pusherKey);
+            pusherClient.bind('notification:new', newHandler);
+            pusherClient.bind('notification:remove', removeHandler);
+        }
+    }, [pusherKey, router, items]);
 
     return (
         <aside

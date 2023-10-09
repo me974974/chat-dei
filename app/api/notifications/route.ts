@@ -48,9 +48,15 @@ export async function POST(
                 },
                 include: {
                     sender: true,
+                    receiver: true
                 }
             });
             
+            // Update all connections with new conversation
+            if (newNotif.receiver.email) {
+                pusherServer.trigger(newNotif.receiver.email, 'conversation:new', newNotif);
+            }
+
             return NextResponse.json(newNotif);
         } else {
             return NextResponse.json({status: 201});
