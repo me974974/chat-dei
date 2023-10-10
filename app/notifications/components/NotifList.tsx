@@ -96,8 +96,8 @@ const NotifList: React.FC<NotificationListProps> = ({
 
         return () => {
             pusherClient.unsubscribe(pusherKey);
-            pusherClient.bind('notification:new', newHandler);
-            pusherClient.bind('notification:remove', removeHandler);
+            pusherClient.unbind('notification:new', newHandler);
+            pusherClient.unbind('notification:remove', removeHandler);
         }
     }, [pusherKey, router, items]);
 
