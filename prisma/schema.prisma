@@ -90,6 +90,7 @@ model Message {
 model Notification {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   createdAt DateTime @default(now())
+  isRespond Boolean?
 
   senderId String @db.ObjectId
   sender User @relation("SentByUser", fields: [senderId], references: [id], onDelete: Cascade)
