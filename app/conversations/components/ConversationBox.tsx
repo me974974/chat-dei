@@ -83,7 +83,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
                 cursor-pointer
                 p-3
             `,
-                selected ? 'bg-neutral-100 dark:bg-slate-600' : 'bg-white dark:bg-slate-500'
+                selected ? 'bg-slate-600' : 'bg-[#818181]'
             )}
         >
             {data.isGroup ? (
