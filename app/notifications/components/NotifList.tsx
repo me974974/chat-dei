@@ -114,7 +114,7 @@ const NotifList: React.FC<NotificationListProps> = ({
                 overflow-y-auto
                 border-r
                 border-gray-200
-                dark:bg-[#818181]
+                bg-[#818181]
             "
         >
             <div className="px-5">
