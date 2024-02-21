@@ -122,7 +122,7 @@ const NotifList: React.FC<NotificationListProps> = ({
                     <div className="
                         text-2xl
                         font-bold
-                        text-gray-800
+                        text-[#fe0002]
                     ">
                         Notifications
                     </div>
