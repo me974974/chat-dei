@@ -39,9 +39,9 @@ const DekstopItem: React.FC<DekstopItemProps> = ({
                     font-semibold
                     text-gray-500
                     hover:text-black
-                    hover:bg-gray-100
+                    hover:bg-[#ce0000]
                 `,
-                    active && "bg-gray-100 text-black"
+                    active && "bg-[#ce0000] text-black"
                 )}
             >
                 <Icon className="h-6 w-6 shrink-0" />
