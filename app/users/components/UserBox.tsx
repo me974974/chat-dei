@@ -61,8 +61,7 @@ const UserBox: React.FC<UserBoxProps> = ({
                     flex
                     items-center
                     space-x-3
-                    bg-white
-                    dark:bg-slate-500
+                    bg-[#fe0000]
                     hover:bg-neutral-100
                     dark:hover:bg-slate-600
                     rounded-lg
