@@ -37,7 +37,7 @@ const DekstopItem: React.FC<DekstopItemProps> = ({
                     text-sm
                     leading-6
                     font-semibold
-                    text-[#0000000]
+                    text-[#000000]
                     hover:text-black
                     hover:bg-[#ce0000]
                 `,
