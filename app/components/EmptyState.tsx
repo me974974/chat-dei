@@ -10,8 +10,8 @@ const EmptyState = () => {
                 flex
                 justify-center
                 items-center
-                bg-[#000000]
-                dark:bg-[#ffffff]
+                bg-[#ffffff]
+                dark:bg-[#000000]
             "
         >
            <div className="text-center items-center flex flex-col">
