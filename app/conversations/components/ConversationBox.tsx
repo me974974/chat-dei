@@ -75,8 +75,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
                 flex
                 items-center
                 space-x-3
-                bg-white
-                dark:bg-slate-500
+                bg-[#818181]
                 hover:bg-neutral-100
                 dark:hover:bg-slate-600
                 rounded-lg
