@@ -26,7 +26,7 @@ const UserList: React.FC<UserListProps> = ({
                 block
                 w-full
                 left-0
-                dark:bg-[#818181]
+                bg-[#818181]
 
             "
         >
