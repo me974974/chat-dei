@@ -39,7 +39,7 @@ const DekstopSidebar: React.FC<DekstopSidebarProps> = ({
                     xl:px-6
                     lg:overflow-y-auto
                     lg:bg-white
-                    lg:dark:bg-[#fe0000]
+                    lg:bg-[#fe0000]
                     lg:border-r-[1px]
                     lg:pb-4
                     lg:flex
