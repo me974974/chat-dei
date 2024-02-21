@@ -83,7 +83,7 @@ const Form = () => {
           className="
             rounded-full 
             p-2 
-            bg-[fe0002]
+            bg-[#fe0002]
             cursor-pointer
             hover:bg-[#ce0000]
             transition
