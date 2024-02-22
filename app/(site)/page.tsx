@@ -22,7 +22,7 @@ export default function Home() {
             height="70"
             width="70"
             className="mx-auto w-auto"
-            src='/images/logoDeidaDev.png'
+            src='/images/New_Logo_Chat_Dei.png'
           />
           <h2
             className="
