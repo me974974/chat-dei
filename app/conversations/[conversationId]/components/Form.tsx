@@ -50,8 +50,8 @@ const Form = () => {
       className="
         py-4 
         px-4 
-        bg-white 
-        dark:bg-slate-400
+        bg-[#ffffff]
+        dark:bg-[#000000]
         border-t 
         flex 
         items-center 
