@@ -232,17 +232,6 @@ const AuthForm = () => {
                         {variant === 'LOGIN' ? 'Créer un compte' : 'Se connecter'}
                     </div>
                 </div>
-                <div> 
-                    <Button type="submit" > 
-                        <Image 
-                            alt="Logo" 
-                            height="70"
-                            width="70" 
-                            className="mx-auto w-auto" 
-                            src='/images/ptoposition_logo.png' 
-                        />
-                    Button> 
-                <div/>
             </div>
         </div>
     );
