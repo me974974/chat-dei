@@ -56,14 +56,14 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
 
     const lastMessageText = useMemo(() => {
         if (lastMessage?.image) {
-            return 'Sent an image';
+            return 'A envoyé une image';
         }
 
         if (lastMessage?.body) {
             return lastMessage.body;
         }
 
-        return "Started a conversation"
+        return "A commencé une conversation"
     }, [lastMessage]);
 
     return (
@@ -127,7 +127,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
                         truncate
                         text-sm
                     `,
-                        hasSeen ? 'text-gray-500 dark:text-stone-400' : 'text-black dark:text-stone-50 font-medium'
+                        hasSeen ? 'text-[#414141]' : 'text-black font-medium'
                     )}>
                         {lastMessageText}
                     </p>
