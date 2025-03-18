@@ -22,30 +22,30 @@ const UserBox: React.FC<UserBoxProps> = ({
     const handleCick = useCallback(() => {
         setIsLoading(true);
         
-        axios.post('/api/notifications', {
-            receiver: data.id
-        })
-        .then((response) => {
-            if (!response.data.status) {
-                toast.success(`Demande d'ami envoyée à : ${data.name}`);
-            } else {
-                axios.post('/api/conversations', { 
-                        userId: data.id
-                    })
-                    .then((data) => {
-                        router.push(`/conversations/${data.data.id}`);
-                    })
-            }
-            setIsLoading(false);
-        })
+        // axios.post('/api/notifications', {
+        //     receiver: data.id
+        // })
+        // .then((response) => {
+        //     if (!response.data.status) {
+        //         toast.success(`Demande d'ami envoyée à : ${data.name}`);
+        //     } else {
+        //         axios.post('/api/conversations', { 
+        //                 userId: data.id
+        //             })
+        //             .then((data) => {
+        //                 router.push(`/conversations/${data.data.id}`);
+        //             })
+        //     }
+        //     setIsLoading(false);
+        // })
 
-        // axios.post('/api/conversations', { 
-        //     userId: data.id
-        // })
-        // .then((data) => {
-        //     router.push(`/conversations/${data.data.id}`);
-        // })
-        // .finally(() => setIsLoading(false));
+        axios.post('/api/conversations', { 
+            userId: data.id
+        })
+        .then((data) => {
+            router.push(`/conversations/${data.data.id}`);
+        })
+        .finally(() => setIsLoading(false));
     }, [data]);
 
     return (
