@@ -32,8 +32,8 @@ model User {
   friendOfIds String[] @db.ObjectId
   friendOf User[] @relation("friends", fields: [friendsIds], references: [id])
   
-  notificationsSent Notification[] @relation("SentByUser")
-  notificationsReceived Notification[] @relation("ReceivedByUser")
+  // notificationsSent Notification[] @relation("SentByUser")
+  // notificationsReceived Notification[] @relation("ReceivedByUser")
 
   accounts Account[]
   messages Message[]
@@ -87,14 +87,14 @@ model Message {
   sender User @relation(fields: [senderId], references: [id], onDelete: Cascade)
 }
 
-model Notification {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt DateTime @default(now())
-  isRespond Boolean?
+// model Notification {
+//   id String @id @default(auto()) @map("_id") @db.ObjectId
+//   createdAt DateTime @default(now())
+//   isRespond Boolean?
 
-  senderId String @db.ObjectId
-  sender User @relation("SentByUser", fields: [senderId], references: [id], onDelete: Cascade)
+//   senderId String @db.ObjectId
+//   sender User @relation("SentByUser", fields: [senderId], references: [id], onDelete: Cascade)
   
-  receiverId String @db.ObjectId
-  receiver User @relation("ReceivedByUser", fields: [receiverId], references: [id], onDelete: Cascade)
-}
+//   receiverId String @db.ObjectId
+//   receiver User @relation("ReceivedByUser", fields: [receiverId], references: [id], onDelete: Cascade)
+// }
